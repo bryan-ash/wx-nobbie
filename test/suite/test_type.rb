@@ -1,9 +1,8 @@
 class TestType < Test::Unit::TestCase
   include NobbieTestCase
-  
+
   def test_type_with_text_ctrl
     #todo: this doesnt seem to work in windows or osx .. but it should ... see KNOWN ISSUES
-    assert_equal 'text_ctrl', text(component('text_ctrl'))
     type '123', :in => 'text_ctrl'
     assert_equal '123', text(component('text_ctrl'))
     assert_events ['text_ctrl: ', 'text_ctrl: 1', 'text_ctrl: 12', 'text_ctrl: 123']
@@ -52,7 +51,7 @@ class TestType < Test::Unit::TestCase
   def test_type_with_component_not_found
     assert_exception ComponentNotFoundException do type 'missing_value', :in => 'missing' end
   end
-  
+
   def test_type_with_unsupported_operation_for_component
     assert_exception UnsupportedOperationForComponentException do type 'button_value', :in => 'button' end
   end
