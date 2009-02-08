@@ -1,0 +1,24 @@
+= KNOWN ISSUES
+
+On Windows there seems to be a strange delay between launching the application and it yielding control to the test
+runner. It seems that the smaller the application, the worse the problem is (i.e. the longer it takes).
+
+When typing into a TextCtrl, if the value being typed is the same as the current value it seems that on OSX the
+text changed event is not fired, but on Windows it is.  I'm not sure which is correct, but the result should be
+consistent - so this looks like a WxRuby issue.
+
+When typing into a readonly ComboBox, on Windows the value changes which is not consistent with the WxRuby
+documentation for 'set_value'. (might be fixed)
+
+OSX seems to have some problems with regard to the UI repainting and the timing/order of events. Further
+investigation is required but there are two problems highlighted in the tests. (1) when a value is set for a TextCtrl 
+during initialisation it is not painted to the screen untill you focus on it.  (2) when typing into a ComboBox the
+events value seems to be behind what is actually typed, e.g. if you type 'ab', two events are raised, but the values
+are '' and 'a'.
+
+Element highlighting seems to be a bit too quick in Windows.
+
+Currently there is no way to interact with the UI if an operation results in a blocking dialog.  For example,
+if 'File -> New' results in a FileDialog being displayed, test execution stops until the blocking dialog
+has been closed manually.  This is annoying and I welcome suggestions of how to overcome this problem, in a platform
+neutral way.
