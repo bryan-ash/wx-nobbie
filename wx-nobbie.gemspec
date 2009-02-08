@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wx-nobbie}
-  s.version = "0.0.3"
+  s.version = "0.0.3.1"
 
   s.authors = ["Paul Alton", "Bryan Ash"]
   s.date = %q{2009-02-08}
