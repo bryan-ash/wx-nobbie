@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wx-nobbie}
-  s.version = "0.0.3.2"
+  s.version = "0.0.3.3"
 
   s.authors = ["Paul Alton", "Bryan Ash"]
   s.date = %q{2009-02-08}
@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.files = ["KNOWN_ISSUES", "README", "lib/nobbie/wx/acceptance_test.rb", "lib/nobbie/wx/command.rb", "lib/nobbie/wx/command_executor.rb", "lib/nobbie/wx/command_factory.rb", "lib/nobbie/wx/driven.rb", "lib/nobbie/wx/launcher.rb", "lib/nobbie/wx/operations.rb", "lib/nobbie/wx/platform.rb", "lib/nobbie/wx/command/choose.rb", "lib/nobbie/wx/command/click_on.rb", "lib/nobbie/wx/command/get_component.rb", "lib/nobbie/wx/command/get_options.rb", "lib/nobbie/wx/command/get_selected_values.rb", "lib/nobbie/wx/command/is_chosen.rb", "lib/nobbie/wx/command/is_enabled.rb", "lib/nobbie/wx/command/select.rb", "lib/nobbie/wx/command/type_into.rb", "lib/nobbie/wx/impl/element/element_path_builder.rb", "lib/nobbie/wx/impl/operation/choosable.rb", "lib/nobbie/wx/impl/operation/select.rb", "test/all_tests.rb", "test/suite/app.rb", "test/suite/nobbie_test_case.rb", "test/suite/test_choose.rb", "test/suite/test_click.rb", "test/suite/test_enabled.rb", "test/suite/test_launcher.rb", "test/suite/test_operations.rb", "test/suite/test_selection.rb", "test/suite/test_type.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/bryan-ash/wx-nobbie}
-  s.rdoc_options = ["--main", "README.txt", "--inline-source", "--charset=UTF-8"]
+  s.rdoc_options = ["--main", "README", "--inline-source", "--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{wxextras}
   s.rubygems_version = %q{1.3.1}
