@@ -1,6 +1,6 @@
 require 'nobbie/wx/platform'
 require 'nobbie/wx/command_factory'
-require 'nobbie/wx/launcher'
+require 'nobbie/wx/application_launcher'
 
 impl = File.dirname(__FILE__) + File::SEPARATOR + 'impl'
 Dir.glob("#{impl}/**/*.rb") {|f| require "#{f}" }
@@ -61,7 +61,7 @@ module Nobbie
       end
 
       private
-     
+
       def coerce_path(path)
         return path if path.respond_to?(:find_component)
 
@@ -74,12 +74,12 @@ module Nobbie
 
         Kernel.raise("Unable to coerce path: #{path}")
       end
-     
+
       #todo: pull up
       def execute(command)
         Command::Executor.new.execute(command)
       end
     end
-    
+
   end
 end
