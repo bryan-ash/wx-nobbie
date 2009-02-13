@@ -135,10 +135,10 @@ class TestFrame < Frame
   end
 end
 
-class TestApp < App
+class ExampleApp < App
   def on_init
-    TestFrame.new(nil, :title => 'test', :size => [1024, 768]).show
+    TestFrame.new(nil, :title => 'test', :size => [1024, 768])
   end
 end
 
-TestApp.new.main_loop if __FILE__ == $0
+ExampleApp.new.main_loop if __FILE__ == $0
