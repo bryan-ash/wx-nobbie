@@ -1,3 +1,7 @@
+
+require 'rubygems'
+require 'wx'
+
 module Nobbie
   module Wx
 
@@ -14,18 +18,10 @@ module Nobbie
     class ApplicationLauncher #:nodoc:
 
       AUT_NOT_WX_APP = "APPLICATION_UNDER_TEST must be an instance of a Wx::App"
-      AUT_NOT_DEFINED = "APPLICATION_UNDER_TEST must be set to be an instance of the application you wish to test"
 
-      def initialize
-        begin
-          app = get_application
-          unless app.is_a?(Wxruby2::App)
-            handle(AUT_NOT_WX_APP)
-          end
-        rescue NameError => e
-          handle(AUT_NOT_DEFINED)
-        end
-        @app = app
+      def initialize(application_under_test)
+        @app = application_under_test
+        Kernel.raise(AUT_NOT_WX_APP) unless @app.is_a?(Wxruby2::App)
       end
 
       def with_application
@@ -60,14 +56,6 @@ module Nobbie
         #@app.top_window.destroy
         #@app.exit_main_loop
         #@app = nil
-      end
-
-      def handle(message)
-        Kernel.raise message
-      end
-
-      def get_application
-        APPLICATION_UNDER_TEST
       end
     end
 

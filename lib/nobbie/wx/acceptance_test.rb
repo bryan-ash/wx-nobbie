@@ -14,6 +14,6 @@ Test::Unit.run = false
 #todo: how the hell does this work(/not work as expected) on OSX?
 at_exit do
   unless $! || Test::Unit.run?
-    exit = Nobbie::Wx::ApplicationLauncher.new.with_application { Thread.pass }
+    exit = Nobbie::Wx::ApplicationLauncher.new(APPLICATION_UNDER_TEST).with_application { Thread.pass }
   end
 end
