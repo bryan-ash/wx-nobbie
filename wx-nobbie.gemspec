@@ -1,15 +1,55 @@
-# -*- encoding: utf-8 -*-
+# -*- ruby -*-
 
 Gem::Specification.new do |s|
   s.name = %q{wx-nobbie}
-  s.version = "0.0.3.4"
+  s.version = "0.0.3.5"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Alton", "Bryan Ash"]
   s.date = %q{2009-02-08}
   s.description = %q{wx-Nobbie is a simple interface for driving wxRuby application development.}
   s.email = %q{bryan.a.ash@gmail.com}
-  s.files = ["KNOWN_ISSUES", "README.txt", "lib/nobbie/wx/acceptance_test.rb", "lib/nobbie/wx/command.rb", "lib/nobbie/wx/command_executor.rb", "lib/nobbie/wx/command_factory.rb", "lib/nobbie/wx/driven.rb", "lib/nobbie/wx/launcher.rb", "lib/nobbie/wx/operations.rb", "lib/nobbie/wx/platform.rb", "lib/nobbie/wx/command/choose.rb", "lib/nobbie/wx/command/click_on.rb", "lib/nobbie/wx/command/get_component.rb", "lib/nobbie/wx/command/get_options.rb", "lib/nobbie/wx/command/get_selected_values.rb", "lib/nobbie/wx/command/is_chosen.rb", "lib/nobbie/wx/command/is_enabled.rb", "lib/nobbie/wx/command/select.rb", "lib/nobbie/wx/command/type_into.rb", "lib/nobbie/wx/impl/element/element_path_builder.rb", "lib/nobbie/wx/impl/operation/choosable.rb", "lib/nobbie/wx/impl/operation/select.rb", "test/all_tests.rb", "test/suite/app.rb", "test/suite/nobbie_test_case.rb", "test/suite/test_choose.rb", "test/suite/test_click.rb", "test/suite/test_enabled.rb", "test/suite/test_launcher.rb", "test/suite/test_operations.rb", "test/suite/test_selection.rb", "test/suite/test_type.rb"]
+  s.files =
+    [ "KNOWN_ISSUES",
+      "README.txt",
+      "lib/nobbie/wx/acceptance_test.rb",
+      "lib/nobbie/wx/application_launcher.rb",
+      "lib/nobbie/wx/command.rb",
+      "lib/nobbie/wx/command_executor.rb",
+      "lib/nobbie/wx/command_factory.rb",
+      "lib/nobbie/wx/driven.rb",
+      "lib/nobbie/wx/operations.rb",
+      "lib/nobbie/wx/platform.rb",
+      "lib/nobbie/wx/command/choose.rb",
+      "lib/nobbie/wx/command/click_on.rb",
+      "lib/nobbie/wx/command/get_component.rb",
+      "lib/nobbie/wx/command/get_options.rb",
+      "lib/nobbie/wx/command/get_selected_values.rb",
+      "lib/nobbie/wx/command/is_chosen.rb",
+      "lib/nobbie/wx/command/is_enabled.rb",
+      "lib/nobbie/wx/command/select.rb",
+      "lib/nobbie/wx/command/type_into.rb",
+      "lib/nobbie/wx/impl/element/element_path_builder.rb",
+      "lib/nobbie/wx/impl/operation/choosable.rb",
+      "lib/nobbie/wx/impl/operation/select.rb",
+      "features/step_definitions",
+      "features/support",
+      "features/acceptance_test.feature",
+      "features/step_definitions/acceptance_test_steps.rb",
+      "features/support/env.rb",
+      "spec/application_launcher_spec.rb",
+      "spec/spec.opts",
+      "spec/spec_helper.rb",
+      "test/all_tests.rb",
+      "test/suite/example_app.rb",
+      "test/suite/nobbie_test_case.rb",
+      "test/suite/test_choose.rb",
+      "test/suite/test_click.rb",
+      "test/suite/test_enabled.rb",
+      "test/suite/test_launcher.rb",
+      "test/suite/test_operations.rb",
+      "test/suite/test_selection.rb",
+      "test/suite/test_type.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/bryan-ash/wx-nobbie}
   s.rdoc_options = ["--main", "README.txt", "--inline-source", "--charset=UTF-8"]
