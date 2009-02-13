@@ -16,12 +16,16 @@ Spec::Rake::SpecTask.new do |t|
   unless ENV['NO_RCOV']
     t.rcov = true
     t.rcov_dir = 'coverage'
-    t.rcov_opts = ['--text-report']
+    t.rcov_opts = ['--text-report --exclude features\/,spec\/']
   end
 end
 
 desc "Run Cucumber features"
-Cucumber::Rake::Task.new do; end
+Cucumber::Rake::Task.new do |t|
+  t.cucumber_opts = "--format pretty"
+  t.rcov = true
+  t.rcov_opts = ['-o coverage --text-report --exclude features\/,spec\/']
+end
 
 desc "Run all tests"
 task :test do
