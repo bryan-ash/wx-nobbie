@@ -17,7 +17,7 @@ module Nobbie
 
     class ApplicationLauncher #:nodoc:
 
-      AUT_NOT_WX_APP = "APPLICATION_UNDER_TEST must be an instance of a Wx::App"
+      AUT_NOT_WX_APP = "application_under_test must be an instance of a Wx::App"
 
       def initialize(application_under_test)
         @app = application_under_test
@@ -26,6 +26,7 @@ module Nobbie
 
       def run
         start
+        set_top_window_for_use_in_operations
         Thread.pass
         stop
       end
@@ -53,6 +54,11 @@ module Nobbie
         #@app.exit_main_loop
         #@app = nil
       end
+
+      def set_top_window_for_use_in_operations
+        Nobbie::Wx::Operations.const_set("TOP_WINDOW",  @app.get_top_window)
+      end
+
     end
 
   end

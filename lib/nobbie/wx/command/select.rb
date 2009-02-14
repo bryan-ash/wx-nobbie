@@ -4,15 +4,15 @@ module Nobbie
 
       class SelectCommand < ComponentAwareCommand #:nodoc:
         def initialize(path, value)
-          super(path) 
+          super(path)
           @value = value
         end
-        
+
         def execute
           if component.is_a?(Menu)
             return handle_menu
           end
-          
+
           ensure_enabled
 
           if component.is_a?(Notebook)
@@ -26,7 +26,7 @@ module Nobbie
           end
           nil
         end
-        
+
         def describe
           "Select '#{@value}' in #{@path}"
         end
@@ -39,8 +39,7 @@ module Nobbie
           ensure_enabled(id)
 
           #todo: should this be a MenuEvent?
-          #todo: find a way to avoid using APPLICATION_UNDER_TEST
-          APPLICATION_UNDER_TEST.get_top_window.process_event(CommandEvent.new(EVT_COMMAND_MENU_SELECTED, id))
+          TOP_WINDOW.process_event(CommandEvent.new(EVT_COMMAND_MENU_SELECTED, id))
 
           return ''
         end
@@ -63,11 +62,11 @@ module Nobbie
           highlight {
             index = component.find_string(@value)
             handle_value_not_found unless index > -1
-  
+
             event = CommandEvent.new(EVT_COMMAND_COMBOBOX_SELECTED, component.get_id)
             component.selection = index
             event.event_object = component
-  
+
             #todo: should this use process_event
             component.command(event)
           }
@@ -78,20 +77,20 @@ module Nobbie
           highlight {
             index = component.find_string(@value)
             handle_value_not_found unless index > -1
-  
+
             event_type = (component.is_a?(ListBox) ? EVT_COMMAND_LISTBOX_SELECTED : EVT_COMMAND_CHOICE_SELECTED)
-  
+
             event = CommandEvent.new(event_type, component.get_id)
             event.int = 1 #no idea why this works .. but it is needed
             event.string = @value
             component.selection = index
             event.event_object = component
-  
+
             component.process_event(event)
           }
         end
       end
 
-    end    
+    end
   end
-end  
+end
