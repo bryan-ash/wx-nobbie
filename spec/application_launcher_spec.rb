@@ -1,6 +1,6 @@
 
 require File.join(File.dirname(__FILE__), 'spec_helper')
-require 'nobbie/wx/application_launcher'
+require 'nobbie/wx'
 
 describe Nobbie::Wx::ApplicationLauncher do
 
