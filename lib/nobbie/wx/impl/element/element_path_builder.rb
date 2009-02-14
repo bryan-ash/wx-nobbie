@@ -19,7 +19,7 @@ module Nobbie
         #todo: make me properly navigate component tree
         #todo: I should blow up if multiple windows with the same name are found ....
 
-        #todo: shouldn''t need to pass top_window here ... nil should search all
+        #todo: shouldn't need to pass top_window here ... nil should search all
         component = Window.find_window_by_name(@name, TOP_WINDOW)
         return component unless component.nil?
 

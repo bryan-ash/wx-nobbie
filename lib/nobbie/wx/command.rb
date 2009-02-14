@@ -34,12 +34,8 @@ module Nobbie
 
           begin
             unless [Menu, Panel].include?(component.class)
-              #puts "highlight on: #{component.class} - #{component.name}"
               original_colour = component.background_colour
               component.background_colour = Colour.from_hex('#FFFF00')
-
-              #todo: these were previously disabled
-#              component.refresh
               component.update
             end
             result = yield component
@@ -49,10 +45,8 @@ module Nobbie
             return result
           ensure
             unless [Menu, Panel].include?(component.class)
-              #puts "highlight off: #{component.class} - #{component.name}"
               component.background_colour = original_colour
               component.refresh
-              #component.update
             end
           end
         end
