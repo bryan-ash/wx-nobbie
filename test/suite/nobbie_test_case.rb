@@ -2,7 +2,6 @@ module NobbieTestCase
   include Nobbie::Wx
 
   def setup
-    puts "\n[Started: #{name}]"
     begin
       select_tab_for_test
     rescue ValueNotFoundException
@@ -10,10 +9,6 @@ module NobbieTestCase
     end
   end
 
-  def teardown
-    puts "\n[Finished: #{name}]"
-  end
-  
   def select_tab_for_test
     clear_events
     tab = self.class.name.gsub('Test', '').downcase
