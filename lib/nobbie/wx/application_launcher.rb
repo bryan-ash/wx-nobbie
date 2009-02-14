@@ -24,15 +24,15 @@ module Nobbie
         Kernel.raise(AUT_NOT_WX_APP) unless @app.is_a?(Wxruby2::App)
       end
 
-      def with_application
+      def run
         start
-        result = yield
+        Thread.pass
         stop
-        result
       end
 
+      private
+
       def start
-        puts "\n>> Starting application: #{@app.class}"
         start = Time.now
 
         @app_thread = Thread.new {
@@ -44,15 +44,11 @@ module Nobbie
         @app_thread.priority = -1
 
         sleep 1
-        finish = Time.now
-        puts "\n>> Took #{finish-start} seconds to start application"
         Thread.pass
       end
 
       def stop
-        puts "\n>> Stopping application: #{@app.class}\n"
-
-        #todo: tbis would seem a polite way to exit .. but causes Bus/Segmentation Errors on OSX.
+        #todo: this would seem a polite way to exit .. but causes Bus/Segmentation Errors on OSX.
         #@app.top_window.destroy
         #@app.exit_main_loop
         #@app = nil

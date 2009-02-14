@@ -10,4 +10,10 @@ describe Nobbie::Wx::ApplicationLauncher do
     }.should raise_error(RuntimeError, /.*be a.*Wx::App.*/)
   end
 
+  it "stops the application under test after running it" do
+    app_launcher = Nobbie::Wx::ApplicationLauncher.new(Wx::App.new)
+    app_launcher.should_receive(:stop)
+    app_launcher.run
+  end
+
 end
