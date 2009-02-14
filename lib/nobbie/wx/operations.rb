@@ -77,7 +77,7 @@ module Nobbie
 
       #todo: pull up
       def execute(command)
-        Command::Executor.new.execute(command)
+        command.execute
       end
     end
 

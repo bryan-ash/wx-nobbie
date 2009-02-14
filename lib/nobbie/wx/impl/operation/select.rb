@@ -1,10 +1,10 @@
 module Nobbie
   module Wx
-    
+
     class SelectOperations
       def initialize(operations, path)
         @operations = operations
-        @path = path    
+        @path = path
       end
 
       # Retrieves the currently selected value for the component specified in the path.
@@ -26,12 +26,12 @@ module Nobbie
       end
 
       private
-      
+
       #todo: pullup execute
       def execute(command)
-        Command::Executor.new.execute(command)
+        command.execute
       end
     end
 
   end
-end  
+end
