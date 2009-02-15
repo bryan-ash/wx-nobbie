@@ -16,6 +16,13 @@ module Nobbie
         execute(command_factory.create_type_into_command(coerce_path(path), text))
       end
 
+      # Returns the text in the component specified in the path.
+      #  Supported components: TextCtrl, ComboBox
+      def text(path)
+        component = component(path)
+        component.nil? ? nil : component.value
+      end
+
       # Clicks the component specified in the path.
       #  Supported components: Button
       def click(path)

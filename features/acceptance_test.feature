@@ -11,3 +11,11 @@ I want Nobbie to provide acceptance test access to the application
     Then "check_box" is not chosen
     When I choose "check_box"
     Then "check_box" is chosen
+
+  Scenario: Type into a text control
+    When I type "123" into "text_ctrl"
+    Then I should see "123" in "text_ctrl"
+
+  Scenario: Type into a combo box
+    When I type "456" into "combo_box"
+    Then I should see "456" in "combo_box"

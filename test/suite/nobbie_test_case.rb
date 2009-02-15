@@ -16,10 +16,6 @@ module NobbieTestCase
     assert_equal tab, selection(:in => 'test_notebook').selected_value
   end
 
-  def text(component)
-    component.nil? ? nil : component.value
-  end
-
   def clear_events
     log.clear
   end
@@ -31,7 +27,7 @@ module NobbieTestCase
 
   def assert_events(expected_items=[])
     expected_items = [expected_items] unless expected_items.is_a?(Array)
-    actual_items = text(log).split("\n")
+    actual_items = text('log').split("\n")
     assert_equal expected_items, actual_items
   end
 
