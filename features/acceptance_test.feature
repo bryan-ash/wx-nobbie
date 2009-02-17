@@ -21,6 +21,15 @@ I want Nobbie to provide acceptance test access to the application
     Then I should see "456" in "combo_box"
 
   Scenario: Click on a button
-    When I select "click" on the "test_notebook"
-    Then "click" on the "test_notebook" should be selected
     When I click on "button"
+
+  Scenario Outline: Working with selectables
+    Given "<selectable>" includes "<value>"
+    When I select "<value>" on the "<selectable>"
+    Then "<value>" on the "<selectable>" should be selected
+
+  Examples:
+    | selectable           | value          |
+    | combo_box_with_items | combo_box_item |
+    | list_box_with_items  | list_box_item  |
+    | test_notebook        | click          |

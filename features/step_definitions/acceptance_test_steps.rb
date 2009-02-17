@@ -33,3 +33,7 @@ end
 Then /^"(.*)" on the "(.*)" should be selected$/ do |value, selectable|
   selection(:in => selectable).selected_value.should == value
 end
+
+Then /^"(.*)" includes "(.*)"$/ do |selectable, value|
+  selection(:in => selectable).options.should include(value)
+end
