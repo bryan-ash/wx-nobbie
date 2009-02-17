@@ -19,3 +19,7 @@ I want Nobbie to provide acceptance test access to the application
   Scenario: Type into a combo box
     When I type "456" into "combo_box"
     Then I should see "456" in "combo_box"
+
+  Scenario: Click on a button
+    Given the "click" tab on the "test_notebook" notebook is selected
+    When I click on "button"
