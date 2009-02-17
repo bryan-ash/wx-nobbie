@@ -33,3 +33,7 @@ I want Nobbie to provide acceptance test access to the application
     | combo_box_with_items | combo_box_item |
     | list_box_with_items  | list_box_item  |
     | test_notebook        | click          |
+
+  Scenario: Enabled controls
+    Then "text_ctrl" is enabled
+    Then "disabled_text_ctrl" is not enabled

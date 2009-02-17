@@ -37,3 +37,12 @@ end
 Then /^"(.*)" includes "(.*)"$/ do |selectable, value|
   selection(:in => selectable).options.should include(value)
 end
+
+Then /^"(.*)" is enabled$/ do |item|
+  enabled?(item).should be_true
+end
+
+Then /^"(.*)" is not enabled$/ do |item|
+  enabled?(item).should_not be_true
+end
+
