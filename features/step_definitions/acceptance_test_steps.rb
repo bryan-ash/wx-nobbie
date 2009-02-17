@@ -1,7 +1,3 @@
-Given /^the "(.*)" tab on the "(.*)" notebook is selected$/ do |tab, notebook|
-  selection(:in => notebook).choose tab
-end
-
 When /^I choose "(.*)"$/ do |item|
   choosable(item).choose
 end
@@ -12,6 +8,10 @@ end
 
 When /^I click on "(.*)"$/ do |item|
   click item
+end
+
+When /^I select "(.*)" on the "(.*)"$/ do |value, selectable|
+  selection(:in => selectable).choose value
 end
 
 Then /^I should see "(.*)" in "(.*)"$/ do |value, item|
@@ -30,3 +30,6 @@ Then /^"(.*)" is not chosen$/ do |item|
   choosable(item).should_not be_chosen
 end
 
+Then /^"(.*)" on the "(.*)" should be selected$/ do |value, selectable|
+  selection(:in => selectable).selected_value.should == value
+end

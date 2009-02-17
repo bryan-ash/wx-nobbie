@@ -21,5 +21,6 @@ I want Nobbie to provide acceptance test access to the application
     Then I should see "456" in "combo_box"
 
   Scenario: Click on a button
-    Given the "click" tab on the "test_notebook" notebook is selected
+    When I select "click" on the "test_notebook"
+    Then "click" on the "test_notebook" should be selected
     When I click on "button"
