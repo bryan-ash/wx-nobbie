@@ -37,3 +37,7 @@ I want Nobbie to provide acceptance test access to the application
   Scenario: Enabled controls
     Then "text_ctrl" is enabled
     Then "disabled_text_ctrl" is not enabled
+
+  Scenario: Working with menus
+    When I select "&New..." on the "&File"
+
