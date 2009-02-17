@@ -134,8 +134,16 @@ class TestFrame < Frame
 end
 
 class ExampleApp < App
+
+  def initialize(visible = true)
+    super()
+    @visible = visible
+  end
+
   def on_init
-    TestFrame.new(nil, :title => 'test', :size => [1024, 768])
+    test_frame = TestFrame.new(nil, :title => 'test', :size => [1024, 768])
+    test_frame.show if @visible
+    self
   end
 end
 
