@@ -23,7 +23,7 @@ module Nobbie
 
       #todo: pullup execute
       def execute(command)
-        command.execute
+        Command::ConsoleExecutor.new.execute(command)
       end
     end
 
