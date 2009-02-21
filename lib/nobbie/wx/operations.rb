@@ -8,6 +8,8 @@ module Nobbie
 
     module Operations
 
+      EXECUTOR = Command::Executor.new
+
       # Types text into the component specified in the path.
       #  Supported components: TextCtrl, ComboBox
       def type(text, path)
@@ -66,7 +68,7 @@ module Nobbie
       end
 
       def execute(command)
-        Command::ConsoleExecutor.new.execute(command)
+        EXECUTOR.execute(command)
       end
 
       private

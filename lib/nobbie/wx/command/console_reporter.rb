@@ -2,12 +2,16 @@ module Nobbie
   module Wx
     module Command
 
-      class ConsoleExecutor #:nodoc:
-        def execute(command)
-          puts "\n> #{command.describe}"
-          result = command.execute
-          puts "< #{render(result)}"
-          result
+      class ConsoleReporter #:nodoc:
+
+        def initialize
+          EXECUTOR.register_before_command_proc do |command|
+            puts "\n> #{command.describe}"
+          end
+
+          EXECUTOR.register_after_command_proc do |result|
+            puts "< #{render(result)}"
+          end
         end
 
         private

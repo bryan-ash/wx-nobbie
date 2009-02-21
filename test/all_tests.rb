@@ -7,4 +7,6 @@ require 'nobbie/wx'
 require 'nobbie/wx/acceptance_test'
 require_all_in_directory [File.dirname(__FILE__), 'suite'].join(File::SEPARATOR)
 
+Nobbie::Wx::Command::ConsoleReporter.new
+
 APPLICATION_UNDER_TEST = ExampleApp.new

@@ -1,7 +1,7 @@
 require 'nobbie/wx/command'
 
-command = File.dirname(__FILE__) + File::SEPARATOR + 'command'
-Dir.glob("#{command}/**/*.rb") {|f| require "#{f}" }
+command = File.dirname(__FILE__) + '/command'
+Dir.glob("#{command}/**/*.rb") {|file| require "#{file}" }
 
 module Nobbie
   module Wx
