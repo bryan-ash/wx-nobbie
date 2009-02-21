@@ -67,6 +67,11 @@ module Nobbie
         Command::Factory.new
       end
 
+      #todo: pull up
+      def execute(command)
+        Command::ConsoleExecutor.new.execute(command)
+      end
+
       private
 
       def coerce_path(path)
@@ -80,11 +85,6 @@ module Nobbie
         return in_(path) if path.is_a?(String)
 
         Kernel.raise("Unable to coerce path: #{path}")
-      end
-
-      #todo: pull up
-      def execute(command)
-        Command::ConsoleExecutor.new.execute(command)
       end
     end
 

@@ -18,13 +18,6 @@ module Nobbie
       def chosen?
         execute(@operations.command_factory.create_is_chosen_command(@path))
       end
-
-      private
-
-      #todo: pullup execute
-      def execute(command)
-        Command::ConsoleExecutor.new.execute(command)
-      end
     end
 
   end

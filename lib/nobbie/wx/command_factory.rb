@@ -3,8 +3,6 @@ require 'nobbie/wx/command'
 command = File.dirname(__FILE__) + File::SEPARATOR + 'command'
 Dir.glob("#{command}/**/*.rb") {|f| require "#{f}" }
 
-require 'nobbie/wx/command/console_executor'
-
 module Nobbie
   module Wx
     module Command

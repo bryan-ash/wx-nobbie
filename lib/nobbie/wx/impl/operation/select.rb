@@ -24,13 +24,6 @@ module Nobbie
       def options
         execute(@operations.command_factory.create_get_options_command(@path))
       end
-
-      private
-
-      #todo: pullup execute
-      def execute(command)
-        Command::ConsoleExecutor.new.execute(command)
-      end
     end
 
   end
