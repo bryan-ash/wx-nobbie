@@ -3,6 +3,7 @@
 require 'rubygems'
 require 'spec/rake/spectask'
 require 'cucumber/rake/task'
+require 'rcov/rcovtask'
 
 $:.unshift(File.join(File.dirname(__FILE__), 'lib'))
 
@@ -27,11 +28,12 @@ Cucumber::Rake::Task.new do |t|
   t.rcov_opts = ['-o coverage --text-report --exclude features\/,spec\/']
 end
 
-desc "Run all tests"
-task :test do
-  cd 'test' do
-    require 'all_tests'
-  end
+desc "Run unit tests"
+Rcov::RcovTask.new(:test) do |t|
+  t.libs << "lib/*:lib/*/*"
+  t.test_files = ['test/all_tests.rb']
+  t.output_dir = "coverage"
+  t.verbose = true
 end
 
 def egrep(pattern)
