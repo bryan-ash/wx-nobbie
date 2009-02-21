@@ -1,6 +1,5 @@
 require 'nobbie/wx/platform'
 require 'nobbie/wx/command_factory'
-require 'nobbie/wx/application_launcher'
 
 impl = File.dirname(__FILE__) + File::SEPARATOR + 'impl'
 Dir.glob("#{impl}/**/*.rb") {|f| require "#{f}" }
@@ -67,7 +66,6 @@ module Nobbie
         Command::Factory.new
       end
 
-      #todo: pull up
       def execute(command)
         Command::ConsoleExecutor.new.execute(command)
       end
