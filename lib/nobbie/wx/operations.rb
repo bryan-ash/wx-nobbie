@@ -1,4 +1,3 @@
-require 'nobbie/wx/platform'
 require 'nobbie/wx/command_factory'
 
 impl = File.dirname(__FILE__) + File::SEPARATOR + 'impl'
