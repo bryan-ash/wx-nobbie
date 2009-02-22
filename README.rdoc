@@ -13,14 +13,14 @@ ways to find components and subsequently multiple ways to interact with them, No
 (Note: if you can't sleep without the ability to find things using xpath or whatever, there are hooks to specify your
 own component finding strategies).
 
-With this in mind, Nobbie provides a simple method of {finding components}[link:classes/Nobbie/Wx/ElementPathBuilder.html]
-and a simple set of {Operations}[link:classes/Nobbie/Wx/Operations.html] to perform on them.
+With this in mind, Nobbie provides a simple method of finding components (using ElementPathBuilder)
+and a simple set of <tt>Operations</tt> to perform on them.
 
 A quick overview with examples:
 
 * Paths ...
 
-  In order to perform operations[link:classes/Nobbie/Wx/Operations.html] on a component, you need to first find it.
+  In order to perform operations on a component, you need to first find it.
   Only very simple 'named' paths are supported by default (but you can implement your own by providing an object that
   responds to 'find_component'). When specifying a path, if you do not provide an object that responds to
   'find_component', Nobbie will attempt to coerce the path into the default path type: Nobbie::Wx::ElementPathBuilder.
@@ -35,69 +35,66 @@ A quick overview with examples:
    :text_ctrl
 
 
-* Typing[link:classes/Nobbie/Wx/Operations.html#type] ...
+* Typing ...
 
    type(value, path)
 
   e.g.
 
    type('fred', in_('first_name'))
-   
+
   ...or if you're one of those DSL/anglification people
-   
+
    type 'fred', :in => 'first_name'
    type 'fred', 'first_name'
    type 'fred', :first_name
-   
+
   This will find the component named 'first_name' and type 'fred' into it.
-  ...this works for anything you can type into, see:
-  {supported components}[link:classes/Nobbie/Wx/Operations.html#type].
+  ...this works for anything you can type into.
 
 
-* Selecting[link:classes/Nobbie/Wx/Operations.html#selection] ...
+* Selecting ...
 
    selection(path).choose(value)
 
   e.g.
 
    selection(in_('title')).choose('Mr')
-   
+
   ...or
-   
+
    selection(:in => 'title').choose 'Mr'
    selection('title').choose 'Mr'
    selection(:title).choose 'Mr'
 
   This will find the component named 'title' and select 'Mr'.
   ...this works for anything where you can make a selection from a number of options
-  (which is quite a lot of things), see:
-  {supported components}[link:classes/Nobbie/Wx/SelectOperations.html#selection].
+  (which is quite a lot of things).
 
   You can get the value of the current selection using:
 
    selection(path).selected_value
 
 
-* Clicking[link:classes/Nobbie/Wx/Operations.html#click] ...
+* Clicking ...
 
    click(path) (for buttons you can also use the label instead of a path)
 
   e.g.
 
    click('save')
-   
+
   ...or
-   
+
    click 'save'
    click :save
    etc
-   
+
   This will find the component named (or labelled) 'save' and click it.
-  ...this works for anything you can click, see:
-  {supported components}[link:classes/Nobbie/Wx/Operations.html#click].
+  ...this works for anything you can click.
 
 
-* Choosing[link:classes/Nobbie/Wx/Operations.html#choosable] ...
+* Choosing ...
 
    choosable(path).choose
 
@@ -112,15 +109,14 @@ A quick overview with examples:
    choosable(:female).choose
 
   This will find the component named 'female' and choose it
-  ...this works for anything that has a chosen/non-chosen state, see:
-  {supported components}[link:classes/Nobbie/Wx/ChoosableOperations.html#choose].
+  ...this works for anything that has a chosen/non-chosen state.
 
   You can determine if a component is currently chosen using:
 
    choosable(path).chosen?
 
 Hopefully that makes some degree of sense, there are a few other operations available, that should be self
-explanatory from the documentation[link:classes/Nobbie/Wx/Operations.html].
+explanatory from the documentation.
 
 * Writing that first test ...
 
