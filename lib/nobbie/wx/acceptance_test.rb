@@ -5,10 +5,6 @@ def require_all_in_directory(dir)
   Dir.glob("#{dir}/**/*.rb") {|f| require "#{f}" }
 end
 
-class Test::Unit::TestCase
-  include Nobbie::Wx::Operations
-end
-
 Test::Unit.run = false
 
 #todo: how the hell does this work(/not work as expected) on OSX?
