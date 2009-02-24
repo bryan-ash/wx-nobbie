@@ -1,17 +1,18 @@
+
+require 'nobbie/wx/command/reporter'
+
 module Nobbie
   module Wx
     module Command
 
-      class ConsoleReporter #:nodoc:
+      class ConsoleReporter < Reporter #:nodoc:
 
-        def initialize
-          EXECUTOR.register_before_command_proc do |command|
-            puts "\n> #{command.describe}"
-          end
+        def before_executing_command(command)
+          STDOUT.puts "\n> #{command.describe}"
+        end
 
-          EXECUTOR.register_after_command_proc do |result|
-            puts "< #{render(result)}"
-          end
+        def after_executing_command(result)
+          STDOUT.puts "< #{render(result)}"
         end
 
         private
