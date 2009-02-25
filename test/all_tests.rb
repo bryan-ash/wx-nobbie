@@ -1,13 +1,15 @@
 
-$LOAD_PATH.unshift '../lib'
+TEST = File.dirname(__FILE__)
+
+$LOAD_PATH.unshift "#{TEST}/../lib"
 
 require 'rubygems'
 require 'nobbie/wx'
+require 'test/unit'
 
-require 'nobbie/wx/acceptance_test'
-require_all_in_directory [File.dirname(__FILE__), 'suite'].join(File::SEPARATOR)
+Dir.glob("#{TEST}/suite/**/*.rb") { |file| require file }
 
 Nobbie::Wx::Operations::EXECUTOR =
   Nobbie::Wx::Command::Executor.new(Nobbie::Wx::Command::ConsoleReporter.new)
 
-APPLICATION_UNDER_TEST = ExampleApp.new
+Nobbie::Wx::ApplicationLauncher.new(ExampleApp.new).run

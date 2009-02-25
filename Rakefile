@@ -16,7 +16,6 @@ Spec::Rake::SpecTask.new do |t|
   t.spec_opts = ['--options', 'spec/spec.opts']
   unless ENV['NO_RCOV']
     t.rcov = true
-    t.rcov_dir = 'coverage'
     t.rcov_opts << '--text-report'
     t.rcov_opts << '--exclude features\/,spec\/'
     t.rcov_opts << '--sort coverage'
@@ -25,7 +24,7 @@ end
 
 desc "Run Cucumber features"
 Cucumber::Rake::Task.new do |t|
-  t.cucumber_opts = "--format pretty"
+  t.cucumber_opts = '--format pretty'
   t.rcov = true
   t.rcov_opts << '-o coverage'
   t.rcov_opts << '--text-report'
@@ -35,9 +34,7 @@ end
 
 desc "Run unit tests"
 Rcov::RcovTask.new(:test) do |t|
-  t.libs << "lib/*:lib/*/*"
-  t.test_files = ['test/all_tests.rb']
-  t.output_dir = "coverage"
+  t.pattern = FileList['test/all_tests.rb']
   t.verbose = true
   t.rcov_opts << '--sort coverage'
 end
