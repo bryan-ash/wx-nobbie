@@ -120,10 +120,10 @@ explanatory from the documentation.
 
 * Writing that first test ...
 
-  By default Nobbie hooks into test/unit.  However, due to a Wx limitation its not possible to launch a new
-  instance of your application for every test run (this would also be very slow anyway).  So, instead Nobbie
-  will launch your application, run all the tests in your suite and then close down the application. (Note: If
-  anyone has a better solution to this ... please let me know).
+  Nobbie can drive a Wx application from Cucumber or test/unit.  However, due to a Wx limitation its not
+  possible to launch a new instance of your application for every test run (this would also be very slow
+  anyway).  So, instead Nobbie will launch your application, run all the tests in your suite and then close
+  down the application. (Note: If anyone has a better solution to this ... please let us know).
 
   In order for this to happen, you must advise Nobbie which application you wish to test by setting the constant
   APPLICATION_UNDER_TEST to an instance of your application, i.e.:

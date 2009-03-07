@@ -1,17 +1,30 @@
+def execute_and_catch_exception
+  @raised_exception = nil
+  begin
+    yield
+  rescue StandardError => exception
+    @raised_exception = exception
+  end
+end
+
 When /^I choose "(.*)"$/ do |item|
-  choosable(item).choose
+  execute_and_catch_exception { choosable(item).choose }
 end
 
 When /^I type "(.*)" into "(.*)"$/ do |value, item|
-  type value, :in => item
+  execute_and_catch_exception { type value, :in => item }
 end
 
 When /^I click on "(.*)"$/ do |item|
-  click item
+  execute_and_catch_exception { click item }
+end
+
+When /^I use an invalid path$/ do 
+  execute_and_catch_exception { click ["Array is not a valid path"] }
 end
 
 When /^I select "(.*)" on the "(.*)"$/ do |value, selectable|
-  selection(:in => selectable).choose value
+  execute_and_catch_exception { selection(:in => selectable).choose value }
 end
 
 Then /^I should see "(.*)" in "(.*)"$/ do |value, item|
@@ -23,7 +36,7 @@ Then /^the application is running$/ do
 end
 
 Then /^"(.*)" is chosen$/ do |item|
-  choosable(item).should be_chosen
+  execute_and_catch_exception { choosable(item).should be_chosen }
 end
 
 Then /^"(.*)" is not chosen$/ do |item|
@@ -31,11 +44,11 @@ Then /^"(.*)" is not chosen$/ do |item|
 end
 
 Then /^"(.*)" on the "(.*)" should be selected$/ do |value, selectable|
-  selection(:in => selectable).selected_value.should == value
+  execute_and_catch_exception { selection(:in => selectable).selected_value.should == value }
 end
 
 Then /^"(.*)" includes "(.*)"$/ do |selectable, value|
-  selection(:in => selectable).options.should include(value)
+  execute_and_catch_exception { selection(:in => selectable).options.should include(value) }
 end
 
 Then /^"(.*)" is enabled$/ do |item|
@@ -46,3 +59,6 @@ Then /^"(.*)" is not enabled$/ do |item|
   enabled?(item).should_not be_true
 end
 
+Then /^I expect an exception with the message "(.*)"$/ do |message|
+  @raised_exception.to_s.should =~ Regexp.new(message)
+end
