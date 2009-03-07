@@ -78,6 +78,7 @@ I want Nobbie to provide acceptance test access to the application
     | combo_box_with_items | combo_box_item |
     | list_box_with_items  | list_box_item  |
     | test_notebook        | click          |
+    | &File                | &New...        |
 
 
   Scenario Outline: Selecting things that aren't there
@@ -110,7 +111,4 @@ I want Nobbie to provide acceptance test access to the application
     Then "text_ctrl" is enabled
     Then "disabled_text_ctrl" is not enabled
 
-
-  Scenario: Working with menus
-    When I select "&New..." on the "&File"
 

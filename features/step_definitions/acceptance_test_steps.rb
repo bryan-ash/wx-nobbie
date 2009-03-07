@@ -31,10 +31,6 @@ Then /^I should see "(.*)" in "(.*)"$/ do |value, item|
   text(item).should == value
 end
 
-Then /^the application is running$/ do
-  @app.is_main_loop_running.should be_true
-end
-
 Then /^"(.*)" is chosen$/ do |item|
   execute_and_catch_exception { choosable(item).should be_chosen }
 end
