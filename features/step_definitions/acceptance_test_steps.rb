@@ -24,7 +24,7 @@ When /^I use an invalid path$/ do
 end
 
 When /^I select "(.*)" on the "(.*)"$/ do |value, selectable|
-  execute_and_catch_exception { selection(:in => selectable).choose value }
+  execute_and_catch_exception { select value, :in => selectable }
 end
 
 Then /^I should see "(.*)" in "(.*)"$/ do |value, item|
@@ -40,11 +40,11 @@ Then /^"(.*)" is not chosen$/ do |item|
 end
 
 Then /^"(.*)" on the "(.*)" should be selected$/ do |value, selectable|
-  execute_and_catch_exception { selection(:in => selectable).selected_value.should == value }
+  execute_and_catch_exception { selected_value(:in => selectable).should == value }
 end
 
 Then /^"(.*)" includes "(.*)"$/ do |selectable, value|
-  execute_and_catch_exception { selection(:in => selectable).options.should include(value) }
+  execute_and_catch_exception { options(:in => selectable).should include(value) }
 end
 
 Then /^"(.*)" is enabled$/ do |item|

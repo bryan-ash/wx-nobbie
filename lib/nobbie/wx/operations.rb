@@ -36,10 +36,22 @@ module Nobbie
         execute(command_factory.create_get_component_command(coerce_path(path)))
       end
 
-      # Returns a SelectionOperations[link:classes/Nobbie/Wx/SelectOperations.html] for interacting with
-      # the component specified in the path
-      def selection(path)
-        SelectOperations.new(self, coerce_path(path))
+      # Selects the given value for the component specified in the path.
+      #  Supported components: Notebook, Menu, ComboBox, ListBox, Choice
+      def select(value, path)
+        execute(command_factory.create_select_command(coerce_path(path), value))
+      end
+
+      # Retrieves the currently selected value for the component specified in the path.
+      #  Supported components: Notebook, ComboBox, ListBox, Choice
+      def selected_value(path)
+        execute(command_factory.create_get_selected_values_command(coerce_path(path)))
+      end
+
+      # Retrieves available options for the component specified in the path.
+      #  Supported components: Notebook, ComboBox, ListBox, Choice
+      def options(path)
+        execute(command_factory.create_get_options_command(coerce_path(path)))
       end
 
       # Chooses the component specified in the path.
