@@ -12,8 +12,8 @@ module NobbieTestCase
   def select_tab_for_test
     clear_events
     tab = self.class.name.gsub('Test', '').downcase
-    selection(:in => 'test_notebook').choose tab
-    assert_equal tab, selection(:in => 'test_notebook').selected_value
+    select tab,:in => 'test_notebook'
+    assert_equal tab, selected_value(:in => 'test_notebook')
   end
 
   def clear_events
