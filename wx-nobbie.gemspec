@@ -2,7 +2,7 @@
 
 Gem::Specification.new do |s|
   s.name = %q{wx-nobbie}
-  s.version = "0.0.4"
+  s.version = "0.1.0"
 
   s.required_rubygems_version = Gem::Requirement.new(">= 0") if s.respond_to? :required_rubygems_version=
   s.authors = ["Paul Alton", "Bryan Ash"]
@@ -32,8 +32,6 @@ Gem::Specification.new do |s|
       "lib/nobbie/wx/command/select.rb",
       "lib/nobbie/wx/command/type_into.rb",
       "lib/nobbie/wx/impl/element/element_path_builder.rb",
-      "lib/nobbie/wx/impl/operation/choosable.rb",
-      "lib/nobbie/wx/impl/operation/select.rb",
       "features/step_definitions",
       "features/support",
       "features/acceptance_test.feature",
@@ -42,6 +40,7 @@ Gem::Specification.new do |s|
       "spec/application_launcher_spec.rb",
       "spec/console_reporter_spec.rb",
       "spec/executor_spec.rb",
+      "spec/platform_spec.rb",
       "spec/reporter_spec.rb",
       "spec/spec.opts",
       "spec/spec_helper.rb",
@@ -57,7 +56,7 @@ Gem::Specification.new do |s|
       "test/suite/test_type.rb"]
   s.has_rdoc = true
   s.homepage = %q{http://github.com/bryan-ash/wx-nobbie}
-  s.rdoc_options = ["--main", "README.txt", "--inline-source", "--charset=UTF-8"]
+  s.rdoc_options = ["--main", "README.rdoc", "--inline-source", "--charset=UTF-8"]
   s.require_paths = ["lib"]
   s.rubyforge_project = %q{wxextras}
   s.rubygems_version = %q{1.3.1}
