@@ -7,12 +7,16 @@ module Nobbie
 
       class ConsoleReporter < Reporter #:nodoc:
 
+        def initialize(output_stream = STDOUT)
+          @output_stream = output_stream
+        end
+
         def before_executing_command(command)
-          STDOUT.puts "\n> #{command.describe}"
+          @output_stream.puts "\n> #{command.describe}"
         end
 
         def after_executing_command(result)
-          STDOUT.puts "< #{render(result)}"
+          @output_stream.puts "< #{render(result)}"
         end
 
         private

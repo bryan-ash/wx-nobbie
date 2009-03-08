@@ -12,19 +12,36 @@ module Nobbie
           ConsoleReporter.new.should be_kind_of(Reporter)
         end
 
-        it "outputs to STDOUT by default" do
-          command = mock('command')
-          command.should_receive(:describe).and_return('description')
-          command.should_receive(:execute).and_return('result')
+        describe "outputs" do
 
-          STDOUT.should_receive(:puts).with(/.*description.*/)
-          STDOUT.should_receive(:puts).with(/.*result.*/)
+          before :each do
+            @command = mock('command')
+            @command.should_receive(:describe).and_return('description')
+            @command.should_receive(:execute).and_return('result')
+          end
+          
+          it "to STDOUT by default" do
+            STDOUT.should_receive(:puts).with(/description/)
+            STDOUT.should_receive(:puts).with(/result/)
+            
+            reporter = ConsoleReporter.new
+            executor = Executor.new(reporter)
+            executor.execute(@command)
+          end
 
-          reporter = ConsoleReporter.new
-          executor = Executor.new(reporter)
-          executor.execute(command)
+          it "to a specified IO stream" do
+            @io = StringIO.new
+            
+            @io.should_receive(:puts).with(/description/)
+            @io.should_receive(:puts).with(/result/)
+            
+            reporter = ConsoleReporter.new(@io)
+            executor = Executor.new(reporter)
+            executor.execute(@command)
+          end        
+
         end
-
+        
       end
 
     end
