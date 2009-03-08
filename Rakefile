@@ -25,7 +25,7 @@ end
 
 desc "Run Cucumber features"
 Cucumber::Rake::Task.new do |t|
-  t.cucumber_opts = '--format pretty'
+  t.cucumber_opts = '--no-source'
   t.rcov = true
   t.rcov_opts << '-o coverage'
   t.rcov_opts << '--text-report'
