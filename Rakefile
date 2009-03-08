@@ -18,6 +18,7 @@ Spec::Rake::SpecTask.new do |t|
     t.rcov = true
     t.rcov_opts << '--text-report'
     t.rcov_opts << '--exclude features\/,spec\/'
+    t.rcov_opts << '--aggregate coverage\coverage.data'
     t.rcov_opts << '--sort coverage'
   end
 end
@@ -29,8 +30,13 @@ Cucumber::Rake::Task.new do |t|
   t.rcov_opts << '-o coverage'
   t.rcov_opts << '--text-report'
   t.rcov_opts << '--exclude features\/,spec\/'
+  t.rcov_opts << '--aggregate coverage\coverage.data'
   t.rcov_opts << '--sort coverage'
 end
+
+directory 'coverage'
+task :features => 'coverage'
+task :spec     => 'coverage'
 
 desc "Run unit tests"
 Rcov::RcovTask.new(:test) do |t|
