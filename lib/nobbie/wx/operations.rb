@@ -1,14 +1,11 @@
 require 'nobbie/wx/command_factory'
 
-impl = File.dirname(__FILE__) + File::SEPARATOR + 'impl'
-Dir.glob("#{impl}/**/*.rb") {|f| require "#{f}" }
+require "nobbie/wx/impl/element/element_path_builder"
 
 module Nobbie
   module Wx
 
     module Operations
-
-      EXECUTOR = Command::Executor.new
 
       # Types text into the component specified in the path.
       #  Supported components: TextCtrl, ComboBox
@@ -86,7 +83,7 @@ module Nobbie
       end
 
       def execute(command)
-        EXECUTOR.execute(command)
+        Command::Executor.execute(command)
       end
 
       private

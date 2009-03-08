@@ -7,6 +7,18 @@ module Nobbie
 
       class Executor #:nodoc:
 
+        def self.execute(command)
+          executor.execute(command)
+        end
+
+        def self.executor
+          @executor ||= new
+        end
+
+        def self.reporter= reporter
+          executor.reporter = reporter
+        end
+        
         def initialize(reporter = Reporter.new)
           @reporter = reporter
         end
@@ -16,6 +28,10 @@ module Nobbie
           result = command.execute
           @reporter.after_executing_command(result)
           result
+        end
+
+        def reporter= reporter
+          @reporter = reporter
         end
 
       end

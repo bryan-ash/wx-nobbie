@@ -16,9 +16,7 @@ module Nobbie
           it "executes a command" do
             @command.should_receive(:execute)
 
-            @executor = Nobbie::Wx::Command::Executor.new
-
-            @executor.execute(@command)
+            Nobbie::Wx::Command::Executor.execute(@command)
           end
 
           it "calls 'before' and 'after' hooks" do
@@ -29,9 +27,9 @@ module Nobbie
 
             @command.should_receive(:execute)
 
-            @executor = Nobbie::Wx::Command::Executor.new
+            executor = Nobbie::Wx::Command::Executor.new
 
-            @executor.execute(@command)
+            executor.execute(@command)
           end
 
           it "calls 'before' and 'after' hooks on supplied Reporter" do
@@ -41,9 +39,8 @@ module Nobbie
 
             @command.should_receive(:execute)
 
-            @executor = Nobbie::Wx::Command::Executor.new(reporter)
-
-            @executor.execute(@command)
+            Nobbie::Wx::Command::Executor.reporter = reporter
+            Nobbie::Wx::Command::Executor.execute(@command)
           end
 
         end

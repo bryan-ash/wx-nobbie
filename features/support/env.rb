@@ -10,6 +10,6 @@ include Nobbie::Wx
 
 silent_reporter = Command::ConsoleReporter.new(StringIO.new)
   
-Operations::EXECUTOR = Command::Executor.new(silent_reporter)
+Command::Executor.reporter = silent_reporter
 
 ApplicationLauncher.new(ExampleApp.new(false)).run
