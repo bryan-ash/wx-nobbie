@@ -42,10 +42,16 @@ module Nobbie
         SelectOperations.new(self, coerce_path(path))
       end
 
-      # Returns a ChoosableOperations[link:classes/Nobbie/Wx/ChoosableOperations.html] for interacting with
-      # the component specified in the path
-      def choosable(path)
-        ChoosableOperations.new(self, coerce_path((path)))
+      # Chooses the component specified in the path.
+      #  Supported components: RadioButton, CheckBox
+      def choose(path)
+        execute(command_factory.create_choose_command(coerce_path(path)))
+      end
+
+      # Determines if the component specified in the path is chosen.
+      #  Supported components: RadioButton, CheckBox
+      def chosen?(path)
+        execute(command_factory.create_is_chosen_command(coerce_path(path)))
       end
 
       # Determines if the component specified in the path is currently enabled.

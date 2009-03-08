@@ -8,7 +8,7 @@ def execute_and_catch_exception
 end
 
 When /^I choose "(.*)"$/ do |item|
-  execute_and_catch_exception { choosable(item).choose }
+  execute_and_catch_exception { choose item }
 end
 
 When /^I type "(.*)" into "(.*)"$/ do |value, item|
@@ -32,11 +32,11 @@ Then /^I should see "(.*)" in "(.*)"$/ do |value, item|
 end
 
 Then /^"(.*)" is chosen$/ do |item|
-  execute_and_catch_exception { choosable(item).should be_chosen }
+  execute_and_catch_exception { chosen?(item).should be_true }
 end
 
 Then /^"(.*)" is not chosen$/ do |item|
-  choosable(item).should_not be_chosen
+  chosen?(item).should be_false
 end
 
 Then /^"(.*)" on the "(.*)" should be selected$/ do |value, selectable|
