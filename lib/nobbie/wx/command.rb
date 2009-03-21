@@ -4,7 +4,7 @@ module Nobbie
 
       class ComponentAwareCommand  #:nodoc:
         def initialize(path)
-          @path = path
+          @path = coerce_path(path)
         end
 
         def component
@@ -50,8 +50,23 @@ module Nobbie
             end
           end
         end
-      end
 
+        private
+
+        def coerce_path(path)
+          return path if path.respond_to?(:find_component)
+
+          if path.is_a?(Hash) && path.has_key?(:in)
+            return path[:in].is_a?(String) ? in_(path[:in]) : path[:in]
+          end
+
+          return in_(path.id2name) if path.is_a?(Symbol)
+          return in_(path) if path.is_a?(String)
+
+          Kernel.raise("Unable to coerce path: #{path}")
+        end
+
+      end
     end
   end
 end
